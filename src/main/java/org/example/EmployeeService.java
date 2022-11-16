@@ -9,7 +9,7 @@ public class EmployeeService {
     }
     public static void viewFullNameEmployees (Employee[] employees) {
         for (Employee employee : employees) {
-            System.out.println(employee.getFullName());
+            System.out.println(employee.getLastName() + " " + employee.getFirstName() + " " + employee.getMiddleName());
         }
     }
     public static void calculateSalarySum (Employee[] employees) {
@@ -25,7 +25,7 @@ public class EmployeeService {
         for (Employee employee : employees) {
             if (employee.getSalary() > max) {
                 max = employee.getSalary();
-                name = employee.getFullName();
+                name = employee.getLastName();
             }
         }
         System.out.println(name + " имеет самую высокую зарплату в размере " + max + " рублей.");
@@ -36,7 +36,7 @@ public class EmployeeService {
         for (Employee employee : employees) {
             if (employee.getSalary() < min) {
                 min = employee.getSalary();
-                name = employee.getFullName();
+                name = employee.getLastName();
             }
         }
         System.out.println(name + " имеет самую низкую зарплату в размере " + min + " рублей.");
