@@ -4,6 +4,9 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.Objects;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
 public class Employee {
 
     private String firstName;
@@ -49,7 +52,7 @@ public class Employee {
 
     public void setLastName(String lastName) {
         if (lastName == null || StringUtils.isAllBlank(lastName) || StringUtils.isAllEmpty(lastName) || StringUtils.containsAny(lastName, "1234567890") || StringUtils.containsAny(lastName, "=_:?%;№!-+)(*&^%$#")) {
-            throw new IllegalArgumentException("400 Bad Request");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         } else {
             this.lastName = StringUtils.substring(lastName, 0, 1).toUpperCase() + StringUtils.substring(lastName, 1);
         }
@@ -57,7 +60,8 @@ public class Employee {
 
     public void setFirstName(String firstName) {
         if (firstName == null || StringUtils.isAllBlank(firstName) || StringUtils.isAllEmpty(firstName) || StringUtils.containsAny(firstName, "1234567890") || StringUtils.containsAny(firstName, "=_:?%;№!-+)(*&^%$#")) {
-            throw new IllegalArgumentException("400 Bad Request");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+
         } else {
             this.firstName = StringUtils.substring(firstName, 0, 1).toUpperCase() + StringUtils.substring(firstName, 1);
         }
@@ -65,7 +69,7 @@ public class Employee {
 
     public void setMiddleName(String middleName) {
         if (middleName == null || StringUtils.isAllBlank(middleName) || StringUtils.isAllEmpty(middleName) || StringUtils.containsAny(middleName, "1234567890") || StringUtils.containsAny(middleName, "=_:?%;№!-+)(*&^%$#")) {
-            throw new IllegalArgumentException("400 Bad Request");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         } else {
             this.middleName = StringUtils.substring(middleName, 0, 1).toUpperCase() + StringUtils.substring(middleName, 1);
         }
